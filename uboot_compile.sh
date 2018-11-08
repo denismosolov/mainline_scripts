@@ -35,7 +35,7 @@ fi
 echo " Enter u-boot source director..."
 cd ..
 
-if [ "${1}" = "one" ] || [ "${1}" = "pc" ] || [ "${1}" = "pc-plus" ] || [ "${1}" = "lite" ] || [ "${1}" = "2" ] || [ "${1}" = "plus" ] || [ "${1}" = "plus2e" ]; then
+if [ "${1}" = "one" ] || [ "${1}" = "zero" ] || [ "${1}" = "pc" ] || [ "${1}" = "pc-plus" ] || [ "${1}" = "lite" ] || [ "${1}" = "2" ] || [ "${1}" = "plus" ] || [ "${1}" = "plus2e" ]; then
 	make $CONFIG > /dev/null 2>&1
 	echo " Build u-boot..."
         echo -e "\e[1;31m Build U-boot \e[0m"

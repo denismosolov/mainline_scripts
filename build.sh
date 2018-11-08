@@ -75,7 +75,7 @@ ROOTFS_check()
 {
 	for ((i = 0; i < 5; i++)); do
 		ROOTFS_PATH=$(whiptail --title "OrangePi Build System" \
-			--inputbox "Pls input mount path of rootfs.(/media/orangepi/linux)" \
+			--inputbox "Pls input mount path of rootfs.(/media/orangepi/rootfs)" \
 			10 60 3>&1 1>&2 2>&3)
 	
 		if [ $i = "4" ]; then
@@ -107,6 +107,7 @@ OPTION=$(whiptail --title "OrangePi Build System" \
 	"2"  "OrangePi Plus2E" \
 	"3"  "OrangePi Lite" \
 	"4"  "OrangePi One" \
+	"5"  "OrangePi Zero" \
 	3>&1 1>&2 2>&3)
 
 if [ $OPTION = "0" ]; then
@@ -120,7 +121,7 @@ elif [ $OPTION = "3" ]; then
 elif [ $OPTION = "4" ]; then
 	export PLATFORM="one"
 elif [ $OPTION = "5" ]; then
-	export PLATFORM="plus"
+	export PLATFORM="zero"
 elif [ $OPTION = "6" ]; then
 	export PLATFORM="2"
 else
@@ -237,17 +238,17 @@ if [ $OPTION = "0" -o $OPTION = "1" ]; then
                         OP_ROOTFS=1
                 fi
                 if [ $OP_ROOTFS = "0" ]; then
-                        #sudo cp -rf $ROOT/output/${DISTRO}_rootfs $ROOT/output/tmp
-                        #if [ -d $ROOT/output/rootfs ]; then
-                        #        sudo rm -rf $ROOT/output/rootfs
-                        #fi
-                        #sudo mv $ROOT/output/tmp $ROOT/output/rootfs
+                        sudo cp -rf $ROOT/output/${DISTRO}_rootfs $ROOT/output/tmp
+                        if [ -d $ROOT/output/rootfs ]; then
+                                sudo rm -rf $ROOT/output/rootfs
+                        fi
+                        sudo mv $ROOT/output/tmp $ROOT/output/rootfs
 			#export DISTRO=$DISTRO
 			#export PLATFORM=$PLATFORM
                       	#sudo -E bash 04_rootfs_build.sh 
                         #sudo ./04_rootfs_build.sh 
-                        sudo ./01_rootfs_build.sh 
-                        sudo ./02_rootfs_build.sh 
+                        #sudo ./01_rootfs_build.sh 
+                        #sudo ./02_rootfs_build.sh 
                         whiptail --title "OrangePi Build System" --msgbox "Rootfs has build" \
                                 10 40 0 --ok-button Continue
                 else

@@ -13,6 +13,8 @@ DTB=$ROOT/output/dtb
 KERNEL_PATH="$1"
 
 # Update kernel and DTB
+rm -rf $KERNEL_PATH/zImage
+rm -rf $KERNEL_PATH/dtb
 cp -rf $KERNEL $KERNEL_PATH/zImage
 cp -rf $DTB $KERNEL_PATH/dtb
 

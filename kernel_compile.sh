@@ -95,23 +95,11 @@ if [ $BUILD_KERNEL = "1" ]; then
 	# copy dtbs
 	echo -e "\e[1;31m Start Copy dtbs \e[0m"
   	cp $LINUX/arch/arm/boot/dts/sun8i-h3-orangepi*.dtb $BUILD/dtb/ 	
+  	cp $LINUX/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dtb $BUILD/dtb/ 	
 	
 	cp $LINUX/arch/arm/boot/zImage $BUILD/zImage_$PLATFORM
 	cp $LINUX/System.map $BUILD/System.map-$PLATFORM
 fi
- 
-## Create uEnv.txt
-#echo -e "\e[1;31m Create uEnv.txt \e[0m"
-#cat <<EOF > "$BUILD/uEnv.txt"
-#console=tty0 console=ttyS0,115200n8 no_console_suspend
-#kernel_filename=orangepi/uImage
-#initrd_filename=initrd.img
-#root=/dev/mmcblk1p2
-#EOF
-
-## Build initrd.img
-#echo -e "\e[1;31m Build initrd.img \e[0m"
-#cp -rfa $ROOT/external/initrd.img $BUILD
 
 clear
 whiptail --title "OrangePi Build System" --msgbox \
