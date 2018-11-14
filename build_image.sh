@@ -27,7 +27,7 @@ if [ $3 = "1" ]; then
 	disk_size="3000"
 else
 	IMAGETYPE="server"
-	disk_size="1000"
+	disk_size="1500"
 fi
 
 BUILD="$ROOT/external"

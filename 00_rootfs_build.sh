@@ -342,7 +342,7 @@ export DEBIAN_FRONTEND=noninteractive
 locale-gen en_US.UTF-8
 apt-get -y update
 apt-get -y install dosfstools curl xz-utils iw rfkill wpasupplicant openssh-server alsa-utils $EXTRADEBS
-apt-get -y install rsync u-boot-tools vim parted network-manager usbmount git autoconf gcc libtool libsysfs-dev pkg-config libdrm-dev vlc xutils-dev hostapd dnsmasq
+apt-get -y install rsync u-boot-tools vim parted network-manager usbmount git autoconf gcc libtool libsysfs-dev pkg-config libdrm-dev xutils-dev hostapd dnsmasq
 apt-get -y remove --purge ureadahead
 $ADDPPACMD
 apt-get -y update
@@ -362,7 +362,7 @@ EOF
 if [ $TYPE = "1"  ]; then
                 cat > "$DEST/type-phase" <<EOF
 #!/bin/sh
-apt-get -y install lubuntu-desktop
+apt-get -y install lubuntu-desktop vlc
 
 apt-get -y remove firefox
 dpkg -i /opt/firefox-esr_52.9.0esr+build2-0ubuntu0.16.04.1_armhf.deb

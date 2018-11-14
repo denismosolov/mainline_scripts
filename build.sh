@@ -101,13 +101,16 @@ fi
 MENUSTR="Welcome to OrangePi Build System. Pls choose Platform."
 ##########################################
 OPTION=$(whiptail --title "OrangePi Build System" \
-	--menu "$MENUSTR" 15 60 7 --cancel-button Exit --ok-button Select \
+	--menu "$MENUSTR" 20 80 9 --cancel-button Exit --ok-button Select \
 	"0"  "OrangePi PC Plus" \
 	"1"  "OrangePi PC" \
 	"2"  "OrangePi Plus2E" \
 	"3"  "OrangePi Lite" \
 	"4"  "OrangePi One" \
 	"5"  "OrangePi Zero" \
+        "6"  "OrangePi 2" \
+        "7"  "OrangePi ZeroPlus2" \
+        "8"  "OrangePi Plus" \
 	3>&1 1>&2 2>&3)
 
 if [ $OPTION = "0" ]; then
@@ -124,6 +127,10 @@ elif [ $OPTION = "5" ]; then
 	export PLATFORM="zero"
 elif [ $OPTION = "6" ]; then
 	export PLATFORM="2"
+elif [ $OPTION = "7" ]; then
+	export PLATFORM="zero_plus2_h3"
+elif [ $OPTION = "8" ]; then
+	export PLATFORM="plus"
 else
 	echo -e "\e[1;31m Pls select correct platform \e[0m"
 	exit 0

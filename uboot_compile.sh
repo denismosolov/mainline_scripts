@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "${1}" = "" ]; then
-	echo "Usage: ./uboot_compile.sh <clean|one|pc|pc-plus|plus|plus2e|lite|2>"
+	echo "Usage: ./uboot_compile.sh <clean|one|pc|pc-plus|plus|plus2e|lite|2|zeroplus2_h3>"
 	exit -1
 fi
 
@@ -35,7 +35,7 @@ fi
 echo " Enter u-boot source director..."
 cd ..
 
-if [ "${1}" = "one" ] || [ "${1}" = "zero" ] || [ "${1}" = "pc" ] || [ "${1}" = "pc-plus" ] || [ "${1}" = "lite" ] || [ "${1}" = "2" ] || [ "${1}" = "plus" ] || [ "${1}" = "plus2e" ]; then
+if [ "${1}" = "one" ] || [ "${1}" = "zero" ] || [ "${1}" = "pc" ] || [ "${1}" = "pc-plus" ] || [ "${1}" = "zero_plus2_h3" ]  || [ "${1}" = "lite" ] || [ "${1}" = "2" ] || [ "${1}" = "plus" ] || [ "${1}" = "plus2e" ]; then
 	make $CONFIG > /dev/null 2>&1
 	echo " Build u-boot..."
         echo -e "\e[1;31m Build U-boot \e[0m"
@@ -48,15 +48,6 @@ if [ "${1}" = "one" ] || [ "${1}" = "zero" ] || [ "${1}" = "pc" ] || [ "${1}" = 
 	fi
 	cp $TOP/uboot/u-boot-sunxi-with-spl.bin $TOP/output/uboot/u-boot-sunxi-with-spl.bin-$1 -rf 
 	echo "*****compile uboot ok*****"
-
-#	cp $TOP/external/Legacy_patch/uboot/orangepi.cmd $TOP/output/uboot/ -rf
-#	cd $TOP/output/uboot
-#	sed -i '/sun8i-h3/d' orangepi.cmd
-#	linenum=`grep -n "uImage" orangepi.cmd | awk '{print $1}' | awk -F: '{print $1}'`
-#	sed -i "${linenum}i fatload mmc 0 0x46000000 ${dts}" orangepi.cmd
-#	chmod +x orangepi.cmd u-boot-sunxi-with-spl.bin
-#	mkimage -C none -A arm -T script -d orangepi.cmd boot.scr
-	
 fi
 
 cd $TOP/output/uboot
