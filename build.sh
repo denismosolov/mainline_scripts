@@ -225,7 +225,7 @@ if [ $OPTION = "0" -o $OPTION = "1" ]; then
         fi
         if [ ! -f $ROOT/output/uboot/u-boot-sunxi-with-spl.bin-$PLATFORM ]; then
             cd $SCRIPTS
-                ./uboot_compile.sh
+                ./uboot_compile.sh $PLATFORM
                 cd -
         fi
 
